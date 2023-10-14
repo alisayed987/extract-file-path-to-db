@@ -25,8 +25,8 @@ async function extractDirectories(folderPaths) {
           folders.push(path.resolve(folderPath, res))
           const table = res.split('-')[0];
           const name = res.split('-')[1];
-          let tst = connection.query(`INSERT INTO ${table} (name) VALUES ("${name}");`)
-          //   console.log('here',tst);
+          connection.query(`INSERT INTO ${table} (name) VALUES ("${name}");`)
+            console.log(`inserted ${name} into ${table}`);
         } else {
           folders.push(path.resolve(folderPath, res))
         }
@@ -76,7 +76,7 @@ async function extractFiles(folderPaths) {
                     if (error) {
                       console.error('Error retrieving data:', error);
                     } else {
-                      console.log('done')
+                      console.log(`inserted product_item into ${table}`);
                     }
                   })
                 });
@@ -92,7 +92,7 @@ async function extractFiles(folderPaths) {
                     if (error) {
                       console.error('Error retrieving data:', error);
                     } else {
-                      console.log('done')
+                      console.log(`inserted product_item into ${table}`);
                     }
                   })
                 });
